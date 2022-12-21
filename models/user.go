@@ -5,34 +5,34 @@ type UserPrimarKey struct {
 }
 
 type CreateUser struct {
-	First_name   string  `json:"first_name"`
-	Last_name    string  `json:"last_name"`
-	Phone_number string  `json:"phone_number"`
-	Balance      float64 `json:"balance"`
+	FirstName   string  `json:"first_name"`
+	LastName    string  `json:"last_name"`
+	PhoneNumber string  `json:"phone_number"`
+	Balance     float64 `json:"balance"`
 }
 type User struct {
-	Id           string  `json:"user_id"`
-	First_name   string  `json:"first_name"`
-	Last_name    string  `json:"last_name"`
-	Phone_number string  `json:"phone_number"`
-	Balance      float64 `json:"balance"`
-	CreatedAt    string  `json:"created_at"`
-	UpdatedAt    string  `json:"updated_at"`
+	Id          string  `json:"user_id"`
+	FirstName   string  `json:"first_name"`
+	LastName    string  `json:"last_name"`
+	PhoneNumber string  `json:"phone_number"`
+	Balance     float64 `json:"balance"`
+	CreatedAt   string  `json:"created_at"`
+	UpdatedAt   string  `json:"updated_at"`
 }
 
 type UpdateUserSwagger struct {
-	First_name   string  `json:"first_name"`
-	Last_name    string  `json:"last_name"`
-	Phone_number string  `json:"phone_number"`
-	Balance      float64 `json:"balance"`
+	FirstName   string  `json:"first_name"`
+	LastName    string  `json:"last_name"`
+	PhoneNumber string  `json:"phone_number"`
+	Balance     float64 `json:"balance"`
 }
 
 type UpdateUser struct {
-	Id           string  `json:"user_id"`
-	First_name   string  `json:"first_name"`
-	Last_name    string  `json:"last_name"`
-	Phone_number string  `json:"phone_number"`
-	Balance      float64 `json:"balance"`
+	Id          string  `json:"user_id"`
+	FirstName   string  `json:"first_name"`
+	LastName    string  `json:"last_name"`
+	PhoneNumber string  `json:"phone_number"`
+	Balance     float64 `json:"balance"`
 }
 
 type GetListUserRequest struct {
