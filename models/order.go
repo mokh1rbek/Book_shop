@@ -12,13 +12,13 @@ type CreateOrderSwagger struct {
 type CreateOrder struct {
 	UserId string  `json:"user_id"`
 	BookId string  `json:"book_id"`
-	Payed   float64 `json:"payed"`
+	Payed  float64 `json:"payed"`
 }
 
 type Order struct {
 	Id        string  `json:"order_id"`
-	UserId   string  `json:"user_id"`
-	BookId   string  `json:"book_id"`
+	UserId    string  `json:"user_id"`
+	BookId    string  `json:"book_id"`
 	Payed     float64 `json:"payed"`
 	CreatedAt string  `json:"created_at"`
 	UpdatedAt string  `json:"updated_at"`
@@ -36,8 +36,8 @@ type UpdateOrderSwagger struct {
 
 type UpdateOrder struct {
 	Id        string  `json:"order_id"`
-	UserId   string  `json:"user_id"`
-	BookId   string  `json:"book_id"`
+	UserId    string  `json:"user_id"`
+	BookId    string  `json:"book_id"`
 	Payed     float64 `json:"payed"`
 	UpdatedAt string  `json:"updated_at"`
 }
