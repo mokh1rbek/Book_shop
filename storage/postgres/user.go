@@ -42,9 +42,9 @@ func (f *UserRepo) Create(ctx context.Context, user *models.CreateUser) (string,
 
 	_, err := f.db.Exec(ctx, query,
 		id,
-		user.First_name,
-		user.Last_name,
-		user.Phone_number,
+		user.FirstName,
+		user.LastName,
+		user.PhoneNumber,
 		user.Balance,
 	)
 
@@ -97,13 +97,13 @@ func (f *UserRepo) GetByPKey(ctx context.Context, pkey *models.UserPrimarKey) (*
 	}
 
 	return &models.User{
-		Id:           id.String,
-		First_name:   first_name.String,
-		Last_name:    last_name.String,
-		Phone_number: phone_number.String,
-		Balance:      balance.Float64,
-		CreatedAt:    createdAt.String,
-		UpdatedAt:    updatedAt.String,
+		Id:          id.String,
+		FirstName:   first_name.String,
+		LastName:    last_name.String,
+		PhoneNumber: phone_number.String,
+		Balance:     balance.Float64,
+		CreatedAt:   createdAt.String,
+		UpdatedAt:   updatedAt.String,
 	}, nil
 }
 
@@ -112,7 +112,7 @@ func (f *UserRepo) GetList(ctx context.Context, req *models.GetListUserRequest) 
 	var (
 		resp   = models.GetListUserResponse{}
 		offset = " OFFSET 0"
-		limit  = " LIMIT 5"
+		limit  = " LIMIT 10"
 	)
 
 	if req.Limit > 0 {
@@ -169,13 +169,13 @@ func (f *UserRepo) GetList(ctx context.Context, req *models.GetListUserRequest) 
 		}
 
 		resp.Users = append(resp.Users, &models.User{
-			Id:           id.String,
-			First_name:   first_name.String,
-			Last_name:    last_name.String,
-			Phone_number: phone_number.String,
-			Balance:      balance.Float64,
-			CreatedAt:    createdAt.String,
-			UpdatedAt:    updatedAt.String,
+			Id:          id.String,
+			FirstName:   first_name.String,
+			LastName:    last_name.String,
+			PhoneNumber: phone_number.String,
+			Balance:     balance.Float64,
+			CreatedAt:   createdAt.String,
+			UpdatedAt:   updatedAt.String,
 		})
 
 	}
@@ -204,9 +204,9 @@ func (f *UserRepo) Update(ctx context.Context, req *models.UpdateUser) (int64, e
 
 	params = map[string]interface{}{
 		"user_id":      req.Id,
-		"first_name":   req.First_name,
-		"last_name":    req.Last_name,
-		"phone_number": req.Phone_number,
+		"first_name":   req.FirstName,
+		"last_name":    req.LastName,
+		"phone_number": req.PhoneNumber,
 		"balance":      req.Balance,
 	}
 

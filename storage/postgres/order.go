@@ -49,7 +49,7 @@ func (f *OrderRepo) Create(ctx context.Context, order *models.CreateOrder) (stri
 		) VALUES ( $1, $2, $3, $4, now() )
 	`
 
-	err := f.db.QueryRow(ctx, queryGetPrice, order.Book_id).
+	err := f.db.QueryRow(ctx, queryGetPrice, order.BookId).
 		Scan(
 			&payed,
 		)
@@ -60,8 +60,8 @@ func (f *OrderRepo) Create(ctx context.Context, order *models.CreateOrder) (stri
 
 	_, err = f.db.Exec(ctx, query,
 		id,
-		order.User_id,
-		order.Book_id,
+		order.UserId,
+		order.BookId,
 		payed,
 	)
 
@@ -109,8 +109,8 @@ func (f *OrderRepo) GetByPKey(ctx context.Context, pkey *models.OrderPrimarKey) 
 
 	return &models.Order{
 		Id:        id.String,
-		User_id:   user_id.String,
-		Book_id:   book_id.String,
+		UserId:    user_id.String,
+		BookId:    book_id.String,
 		Payed:     payed.Float64,
 		CreatedAt: created_at.String,
 	}, nil
@@ -121,7 +121,7 @@ func (f *OrderRepo) GetList(ctx context.Context, req *models.GetListOrderRequest
 	var (
 		resp   = models.GetListOrderResponse{}
 		offset = " OFFSET 0"
-		limit  = " LIMIT 5"
+		limit  = " LIMIT 10"
 	)
 
 	if req.Limit > 0 {
@@ -198,10 +198,10 @@ func (f *OrderRepo) Update(ctx context.Context, req *models.UpdateOrder) (int64,
 			book_id = :book_id,
 			payed = :payed,
 			updated_at = now(),
-		WHERasdE order_id = :order_id
+		WHERE order_id = :order_id
 	`
 
-	err := f.db.QueryRow(ctx, queryGetPrice, req.Book_id).
+	err := f.db.QueryRow(ctx, queryGetPrice, req.BookId).
 		Scan(
 			&req.Payed,
 		)
@@ -215,8 +215,8 @@ func (f *OrderRepo) Update(ctx context.Context, req *models.UpdateOrder) (int64,
 
 	params = map[string]interface{}{
 		"order_id": req.Id,
-		"user_id":  req.User_id,
-		"book_id":  req.Book_id,
+		"user_id":  req.UserId,
+		"book_id":  req.BookId,
 		"payed":    req.Payed,
 	}
 
