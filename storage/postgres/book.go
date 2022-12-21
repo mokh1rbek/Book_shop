@@ -106,7 +106,7 @@ func (f *BookRepo) GetList(ctx context.Context, req *models.GetListBookRequest) 
 	var (
 		resp   = models.GetListBookResponse{}
 		offset = " OFFSET 0"
-		limit  = " LIMIT 5"
+		limit  = " LIMIT 10"
 	)
 
 	if req.Limit > 0 {
