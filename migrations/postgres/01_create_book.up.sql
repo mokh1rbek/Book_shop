@@ -1,18 +1,20 @@
-CREATE TABLE users (
-    user_id UUID NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
-    first_name CHARACTER VARYING(45) NOT NULL,
-    last_name CHARACTER VARYING(45) NOT NULL,
-    phone_number VARCHAR(12) NOT NULL,
-    balance NUMERIC NOT NULL DEFAULT 0,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    updated_at TIMESTAMP NOT NULL
-);
 
 CREATE TABLE books (
     book_id UUID NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
     title VARCHAR NOT NULL,
-    author VARCHAR(150),
+    author VARCHAR(255),
     price NUMERIC NOT NULL,
+    date DATE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP NOT NULL
+);
+
+CREATE TABLE users (
+    user_id UUID NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
+    first_name VARCHAR(45) NOT NULL,
+    last_name VARCHAR(45) NOT NULL,
+    phone_number VARCHAR(12) NOT NULL,
+    balance NUMERIC NOT NULL DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
     updated_at TIMESTAMP NOT NULL
 );
