@@ -48,7 +48,7 @@ func checkPassword() gin.HandlerFunc {
 	return func(c *gin.Context) {
 
 		if _, ok := c.Request.Header["Password"]; ok {
-			if c.Request.Header["Password"][0] != "samandevop" {
+			if c.Request.Header["Password"][0] != "5544" {
 				c.AbortWithError(http.StatusForbidden, errors.New("not found password"))
 				return
 			}
