@@ -5,9 +5,9 @@ import (
 	"log"
 
 	"github.com/gin-gonic/gin"
-	"github.com/mokh1rbek/Book_shop/api"
-	"github.com/mokh1rbek/Book_shop/config"
-	"github.com/mokh1rbek/Book_shop/storage/postgres"
+	"github.com/mokh1rbek/Book_CRUD/api"
+	"github.com/mokh1rbek/Book_CRUD/config"
+	"github.com/mokh1rbek/Book_CRUD/storage/postgres"
 )
 
 func main() {

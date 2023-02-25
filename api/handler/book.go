@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/mokh1rbek/Book_shop/models"
+	"github.com/mokh1rbek/Book_CRUD/models"
 
 	"github.com/gin-gonic/gin"
 )
@@ -20,8 +20,8 @@ import (
 // @Tags Book
 // @Accept json
 // @Produce json
-// @Param book body models.CreateBook true "CreatebookRequestBody"
-// @Success 201 {object} models.Book "GetbookBody"
+// @Param book body models.CreateBook true "CreateBookRequestBody"
+// @Success 201 {object} models.Book "GetBookBody"
 // @Response 400 {object} string "Invalid Argument"
 // @Failure 500 {object} string "Server Error"
 func (h *HandlerV1) CreateBook(c *gin.Context) {
@@ -151,7 +151,7 @@ func (h *HandlerV1) GetBookList(c *gin.Context) {
 // @Accept json
 // @Produce json
 // @Param id path string true "id"
-// @Param book body models.UpdateBookSwagger true "CreateBookRequestBody"
+// @Param Book body models.UpdateBook true "CreateBookRequestBody"
 // @Success 200 {object} models.Book "GetBooksBody"
 // @Response 400 {object} string "Invalid Argument"
 // @Failure 500 {object} string "Server Error"

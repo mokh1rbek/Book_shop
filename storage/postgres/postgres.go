@@ -1,77 +1,55 @@
 package postgres
 
-import (
-	"context"
-	"fmt"
+// import (
+// 	"context"
+// 	"fmt"
 
-	"github.com/jackc/pgx/v4/pgxpool"
+// 	"github.com/jackc/pgx/v4/pgxpool"
 
-	"github.com/mokh1rbek/Book_shop/config"
-	"github.com/mokh1rbek/Book_shop/storage"
-)
+// 	"github.com/mokh1rbek/Book_CRUD/config"
+// 	"github.com/mokh1rbek/Book_CRUD/storage"
+// )
 
-type Store struct {
-	db    *pgxpool.Pool
-	book  *BookRepo
-	user  *UserRepo
-	order *OrderRepo
-}
+// type Store struct {
+// 	db       *pgxpool.Pool
+// 	category *CategoryRepo
+// }
 
-func NewPostgres(ctx context.Context, cfg config.Config) (storage.StorageI, error) {
-	config, err := pgxpool.ParseConfig(fmt.Sprintf(
-		"postgres://%s:%s@%s:%s/%s?sslmode=disable",
-		cfg.PostgresUser,
-		cfg.PostgresPassword,
-		cfg.PostgresHost,
-		cfg.PostgresPort,
-		cfg.PostgresDatabase,
-	))
-	if err != nil {
-		return nil, err
-	}
+// func NewPostgres(ctx context.Context, cfg config.Config) (storage.StorageI, error) {
+// 	config, err := pgxpool.ParseConfig(fmt.Sprintf(
+// 		"postgres://%s:%s@%s:%s/%s?sslmode=disable",
+// 		cfg.PostgresUser,
+// 		cfg.PostgresPassword,
+// 		cfg.PostgresHost,
+// 		cfg.PostgresPort,
+// 		cfg.PostgresDatabase,
+// 	))
+// 	if err != nil {
+// 		return nil, err
+// 	}
 
-	config.MaxConns = cfg.PostgresMaxConnections
+// 	config.MaxConns = cfg.PostgresMaxConnections
 
-	pool, err := pgxpool.ConnectConfig(ctx, config)
-	if err != nil {
-		return nil, err
-	}
+// 	pool, err := pgxpool.ConnectConfig(ctx, config)
+// 	if err != nil {
+// 		return nil, err
+// 	}
 
-	return &Store{
-		db:    pool,
-		book:  NewBookRepo(pool),
-		user:  NewUserRepo(pool),
-		order: NewOrderRepo(pool),
-	}, err
-}
+// 	return &Store{
+// 		db:       pool,
+// 		category: NewCategoryRepo(pool),
+// 	}, err
+// }
 
-func (s *Store) CloseDB() {
-	s.db.Close()
-}
+// func (s *Store) CloseDB() {
+// 	s.db.Close()
+// }
 
-func (s *Store) Book() storage.BookRepoI {
+// func (s *Store) Category() storage.CategoryRepoI {
 
-	if s.book == nil {
-		s.book = NewBookRepo(s.db)
-	}
+// 	if s.category == nil {
+// 		s.category = NewCategoryRepo(s.db)
+// 	}
 
-	return s.book
-}
-
-func (s *Store) User() storage.UserRepoI {
-
-	if s.user == nil {
-		s.user = NewUserRepo(s.db)
-	}
-
-	return s.user
-}
-
-func (s *Store) Order() storage.OrderRepoI {
-
-	if s.order == nil {
-		s.order = NewOrderRepo(s.db)
-	}
-
-	return s.order
-}
+// 	return s.category
+// }

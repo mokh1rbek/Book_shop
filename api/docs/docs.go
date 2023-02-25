@@ -16,9 +16,9 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/book": {
+        "/example": {
             "get": {
-                "description": "Get List Book",
+                "description": "Get List Example",
                 "consumes": [
                     "application/json"
                 ],
@@ -26,10 +26,10 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Book"
+                    "Example"
                 ],
-                "summary": "Get List Book",
-                "operationId": "get_list_book",
+                "summary": "Get List Example",
+                "operationId": "get_list_example",
                 "parameters": [
                     {
                         "type": "string",
@@ -46,9 +46,9 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "GetBookBody",
+                        "description": "GetExampleBody",
                         "schema": {
-                            "$ref": "#/definitions/models.GetListBookResponse"
+                            "$ref": "#/definitions/models.GetListExampleResponse"
                         }
                     },
                     "400": {
@@ -66,7 +66,7 @@ const docTemplate = `{
                 }
             },
             "post": {
-                "description": "Create Book",
+                "description": "Create Example",
                 "consumes": [
                     "application/json"
                 ],
@@ -74,26 +74,26 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Book"
+                    "Example"
                 ],
-                "summary": "Create Book",
-                "operationId": "create_book",
+                "summary": "Create Example",
+                "operationId": "create_example",
                 "parameters": [
                     {
-                        "description": "CreatebookRequestBody",
-                        "name": "book",
+                        "description": "CreateExampleRequestBody",
+                        "name": "example",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.CreateBook"
+                            "$ref": "#/definitions/models.CreateExample"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "GetbookBody",
+                        "description": "GetExampleBody",
                         "schema": {
-                            "$ref": "#/definitions/models.Book"
+                            "$ref": "#/definitions/models.Example"
                         }
                     },
                     "400": {
@@ -111,9 +111,9 @@ const docTemplate = `{
                 }
             }
         },
-        "/book/{id}": {
+        "/example/{id}": {
             "get": {
-                "description": "Get By Id Book",
+                "description": "Get By Id Example",
                 "consumes": [
                     "application/json"
                 ],
@@ -121,10 +121,10 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Book"
+                    "Example"
                 ],
-                "summary": "Get By Id Book",
-                "operationId": "get_by_id_book",
+                "summary": "Get By Id Example",
+                "operationId": "get_by_id_example",
                 "parameters": [
                     {
                         "type": "string",
@@ -136,9 +136,9 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "GetBookBody",
+                        "description": "GetExampleBody",
                         "schema": {
-                            "$ref": "#/definitions/models.Book"
+                            "$ref": "#/definitions/models.Example"
                         }
                     },
                     "400": {
@@ -156,7 +156,7 @@ const docTemplate = `{
                 }
             },
             "put": {
-                "description": "Update Book",
+                "description": "Update Example",
                 "consumes": [
                     "application/json"
                 ],
@@ -164,10 +164,10 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Book"
+                    "Example"
                 ],
-                "summary": "Update Book",
-                "operationId": "update_book",
+                "summary": "Update Example",
+                "operationId": "update_example",
                 "parameters": [
                     {
                         "type": "string",
@@ -177,20 +177,20 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "description": "CreateBookRequestBody",
-                        "name": "book",
+                        "description": "CreateExampleRequestBody",
+                        "name": "Example",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.UpdateBookSwagger"
+                            "$ref": "#/definitions/models.UpdateExample"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "GetBooksBody",
+                        "description": "GetExamplesBody",
                         "schema": {
-                            "$ref": "#/definitions/models.Book"
+                            "$ref": "#/definitions/models.Example"
                         }
                     },
                     "400": {
@@ -208,7 +208,7 @@ const docTemplate = `{
                 }
             },
             "delete": {
-                "description": "Delete By Id Book",
+                "description": "Delete By Id Example",
                 "consumes": [
                     "application/json"
                 ],
@@ -216,10 +216,10 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Book"
+                    "Example"
                 ],
-                "summary": "Delete By Id Book",
-                "operationId": "delete_by_id_book",
+                "summary": "Delete By Id Example",
+                "operationId": "delete_by_id_example",
                 "parameters": [
                     {
                         "type": "string",
@@ -231,479 +231,9 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "GetBookBody",
+                        "description": "GetExampleBody",
                         "schema": {
-                            "$ref": "#/definitions/models.Book"
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid Argument",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "Server Error",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/order": {
-            "get": {
-                "description": "Get List Order",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Order"
-                ],
-                "summary": "Get List Order",
-                "operationId": "get_list_order",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "offset",
-                        "name": "offset",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "limit",
-                        "name": "limit",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "GetOrderBody",
-                        "schema": {
-                            "$ref": "#/definitions/models.GetListOrderResponse"
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid Argument",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "Server Error",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "description": "Create Order",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Order"
-                ],
-                "summary": "Create Order",
-                "operationId": "create_order",
-                "parameters": [
-                    {
-                        "description": "CreateOrderRequestBody",
-                        "name": "order",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.CreateOrderSwagger"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "GetOrderBody",
-                        "schema": {
-                            "$ref": "#/definitions/models.Order"
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid Argument",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "Server Error",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/order/{id}": {
-            "get": {
-                "description": "Get By Id Order",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Order"
-                ],
-                "summary": "Get By Id Order",
-                "operationId": "get_by_id_order",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "id",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "GetOrderBody",
-                        "schema": {
-                            "$ref": "#/definitions/models.Order"
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid Argument",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "Server Error",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
-            "put": {
-                "description": "Update Order",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Order"
-                ],
-                "summary": "Update Order",
-                "operationId": "update_order",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "id",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    },
-                    {
-                        "description": "CreateOrderRequestBody",
-                        "name": "order",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.UpdateOrderSwagger"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "GetOrdersBody",
-                        "schema": {
-                            "$ref": "#/definitions/models.Order"
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid Argument",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "Server Error",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "description": "Delete By Id Order",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Order"
-                ],
-                "summary": "Delete By Id Order",
-                "operationId": "delete_by_id_order",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "id",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "GetOrderBody",
-                        "schema": {
-                            "$ref": "#/definitions/models.Order"
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid Argument",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "Server Error",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/user": {
-            "get": {
-                "description": "Get List User",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "User"
-                ],
-                "summary": "Get List User",
-                "operationId": "get_list_user",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "offset",
-                        "name": "offset",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "limit",
-                        "name": "limit",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "GetUserBody",
-                        "schema": {
-                            "$ref": "#/definitions/models.GetListUserResponse"
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid Argument",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "Server Error",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "description": "Create User",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "User"
-                ],
-                "summary": "Create User",
-                "operationId": "create_user",
-                "parameters": [
-                    {
-                        "description": "CreateUserRequestBody",
-                        "name": "user",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.CreateUser"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "GetUserBody",
-                        "schema": {
-                            "$ref": "#/definitions/models.User"
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid Argument",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "Server Error",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/user/{id}": {
-            "get": {
-                "description": "Get By Id User",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "User"
-                ],
-                "summary": "Get By Id User",
-                "operationId": "get_by_id_user",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "id",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "GetUserBody",
-                        "schema": {
-                            "$ref": "#/definitions/models.User"
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid Argument",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "Server Error",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
-            "put": {
-                "description": "Update User",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "User"
-                ],
-                "summary": "Update User",
-                "operationId": "update_user",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "id",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    },
-                    {
-                        "description": "CreateUserRequestBody",
-                        "name": "user",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.UpdateUserSwagger"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "GetUsersBody",
-                        "schema": {
-                            "$ref": "#/definitions/models.User"
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid Argument",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "Server Error",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "description": "Delete By Id User",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "User"
-                ],
-                "summary": "Delete By Id User",
-                "operationId": "delete_by_id_user",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "id",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "GetUserBody",
-                        "schema": {
-                            "$ref": "#/definitions/models.User"
+                            "$ref": "#/definitions/models.Example"
                         }
                     },
                     "400": {
@@ -723,194 +253,22 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "models.Book": {
+        "models.CreateExample": {
             "type": "object",
             "properties": {
-                "author": {
-                    "type": "string"
-                },
-                "book_id": {
-                    "type": "string"
-                },
-                "created_at": {
-                    "type": "string"
-                },
-                "price": {
-                    "type": "number"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "updated_at": {
-                    "type": "string"
-                }
-            }
-        },
-        "models.CreateBook": {
-            "type": "object",
-            "properties": {
-                "author": {
-                    "type": "string"
-                },
-                "price": {
-                    "type": "number"
-                },
-                "title": {
-                    "type": "string"
-                }
-            }
-        },
-        "models.CreateOrderSwagger": {
-            "type": "object",
-            "properties": {
-                "book_id": {
-                    "type": "string"
-                },
-                "user_id": {
-                    "type": "string"
-                }
-            }
-        },
-        "models.CreateUser": {
-            "type": "object",
-            "properties": {
-                "balance": {
-                    "type": "number"
-                },
                 "first_name": {
                     "type": "string"
                 },
                 "last_name": {
                     "type": "string"
-                },
-                "phone_number": {
-                    "type": "string"
                 }
             }
         },
-        "models.GetListBookResponse": {
+        "models.Example": {
             "type": "object",
             "properties": {
-                "books": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/models.Book"
-                    }
-                },
-                "count": {
-                    "type": "integer"
-                }
-            }
-        },
-        "models.GetListOrderResponse": {
-            "type": "object",
-            "properties": {
-                "count": {
-                    "type": "integer"
-                },
-                "orders": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/models.OrderGroup"
-                    }
-                }
-            }
-        },
-        "models.GetListUserResponse": {
-            "type": "object",
-            "properties": {
-                "count": {
-                    "type": "integer"
-                },
-                "users": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/models.User"
-                    }
-                }
-            }
-        },
-        "models.Order": {
-            "type": "object",
-            "properties": {
-                "book_id": {
+                "actor_id": {
                     "type": "string"
-                },
-                "created_at": {
-                    "type": "string"
-                },
-                "order_id": {
-                    "type": "string"
-                },
-                "payed": {
-                    "type": "number"
-                },
-                "updated_at": {
-                    "type": "string"
-                },
-                "user_id": {
-                    "type": "string"
-                }
-            }
-        },
-        "models.OrderGroup": {
-            "type": "object",
-            "properties": {
-                "fullname": {
-                    "type": "string"
-                },
-                "total_payed": {
-                    "type": "number"
-                }
-            }
-        },
-        "models.UpdateBookSwagger": {
-            "type": "object",
-            "properties": {
-                "author": {
-                    "type": "string"
-                },
-                "price": {
-                    "type": "number"
-                },
-                "title": {
-                    "type": "string"
-                }
-            }
-        },
-        "models.UpdateOrderSwagger": {
-            "type": "object",
-            "properties": {
-                "book_id": {
-                    "type": "string"
-                },
-                "user_id": {
-                    "type": "string"
-                }
-            }
-        },
-        "models.UpdateUserSwagger": {
-            "type": "object",
-            "properties": {
-                "balance": {
-                    "type": "number"
-                },
-                "first_name": {
-                    "type": "string"
-                },
-                "last_name": {
-                    "type": "string"
-                },
-                "phone_number": {
-                    "type": "string"
-                }
-            }
-        },
-        "models.User": {
-            "type": "object",
-            "properties": {
-                "balance": {
-                    "type": "number"
                 },
                 "created_at": {
                     "type": "string"
@@ -921,13 +279,35 @@ const docTemplate = `{
                 "last_name": {
                     "type": "string"
                 },
-                "phone_number": {
-                    "type": "string"
-                },
                 "updated_at": {
                     "type": "string"
+                }
+            }
+        },
+        "models.GetListExampleResponse": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
                 },
-                "user_id": {
+                "exapmle": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Example"
+                    }
+                }
+            }
+        },
+        "models.UpdateExample": {
+            "type": "object",
+            "properties": {
+                "actor_id": {
+                    "type": "string"
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "last_name": {
                     "type": "string"
                 }
             }

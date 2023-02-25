@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"github.com/mokh1rbek/Book_shop/storage"
+	"github.com/mokh1rbek/Book_CRUD/storage"
 )
 
 type HandlerV1 struct {
