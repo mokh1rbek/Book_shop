@@ -1,55 +1,60 @@
 package postgres
 
-// import (
-// 	"context"
-// 	"fmt"
+import (
+	"context"
+	"fmt"
 
-// 	"github.com/jackc/pgx/v4/pgxpool"
+	"github.com/jackc/pgx/v4/pgxpool"
 
-// 	"github.com/mokh1rbek/Book_CRUD/config"
-// 	"github.com/mokh1rbek/Book_CRUD/storage"
-// )
+	"github.com/mokh1rbek/Book_CRUD/config"
+	"github.com/mokh1rbek/Book_CRUD/storage"
+)
 
-// type Store struct {
-// 	db       *pgxpool.Pool
-// 	category *CategoryRepo
-// }
+type Store struct {
+	db       *pgxpool.Pool
+	category *BookRepo
+}
 
-// func NewPostgres(ctx context.Context, cfg config.Config) (storage.StorageI, error) {
-// 	config, err := pgxpool.ParseConfig(fmt.Sprintf(
-// 		"postgres://%s:%s@%s:%s/%s?sslmode=disable",
-// 		cfg.PostgresUser,
-// 		cfg.PostgresPassword,
-// 		cfg.PostgresHost,
-// 		cfg.PostgresPort,
-// 		cfg.PostgresDatabase,
-// 	))
-// 	if err != nil {
-// 		return nil, err
-// 	}
+// Book implements storage.StorageI
+func (*Store) Book() storage.BookRepoI {
+	panic("unimplemented")
+}
 
-// 	config.MaxConns = cfg.PostgresMaxConnections
+func NewPostgres(ctx context.Context, cfg config.Config) (storage.StorageI, error) {
+	config, err := pgxpool.ParseConfig(fmt.Sprintf(
+		"postgres://%s:%s@%s:%s/%s?sslmode=disable",
+		cfg.PostgresUser,
+		cfg.PostgresPassword,
+		cfg.PostgresHost,
+		cfg.PostgresPort,
+		cfg.PostgresDatabase,
+	))
+	if err != nil {
+		return nil, err
+	}
 
-// 	pool, err := pgxpool.ConnectConfig(ctx, config)
-// 	if err != nil {
-// 		return nil, err
-// 	}
+	config.MaxConns = cfg.PostgresMaxConnections
 
-// 	return &Store{
-// 		db:       pool,
-// 		category: NewCategoryRepo(pool),
-// 	}, err
-// }
+	pool, err := pgxpool.ConnectConfig(ctx, config)
+	if err != nil {
+		return nil, err
+	}
 
-// func (s *Store) CloseDB() {
-// 	s.db.Close()
-// }
+	return &Store{
+		db:       pool,
+		category: NewBookRepo(pool),
+	}, err
+}
 
-// func (s *Store) Category() storage.CategoryRepoI {
+func (s *Store) CloseDB() {
+	s.db.Close()
+}
 
-// 	if s.category == nil {
-// 		s.category = NewCategoryRepo(s.db)
-// 	}
+func (s *Store) Category() storage.BookRepoI {
 
-// 	return s.category
-// }
+	if s.category == nil {
+		s.category = NewBookRepo(s.db)
+	}
+
+	return s.category
+}
